@@ -1,0 +1,29 @@
+# Last Modified: Mon Sep 13 11:53:12 2021
+abi <abi/3.0>,
+
+include <tunables/global>
+
+/usr/bin/evince {
+  include <abstractions/base>
+  include <abstractions/enchant>
+  include <abstractions/gio-open>
+  include <abstractions/gnome>
+  include <abstractions/openssl>
+  include <abstractions/ubuntu-browsers.d/ubuntu-integration>
+
+  deny /etc/passwd r,
+
+  /etc/nsswitch.conf r,
+  /usr/bin/evince mr,
+  /usr/share/evince/** r,
+  /usr/share/evince/icons/hicolor/**/ r,
+  /usr/share/mime/mime.cache r,
+  /usr/share/thumbnailers/ r,
+  /usr/share/thumbnailers/* r,
+  /usr/share/xml/iso-codes/* r,
+  owner /home/mz/** r,
+  owner /home/mz/.cache/fontconfig/* rw,
+  owner /home/mz/.cache/thumbnails/** r,
+  owner /run/user/1000/gdm/Xauthority r,
+
+}

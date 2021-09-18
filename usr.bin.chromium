@@ -1,0 +1,31 @@
+# Last Modified: Mon Sep 13 20:19:30 2021
+abi <abi/3.0>,
+
+include <tunables/global>
+
+/usr/bin/chromium {
+  include <abstractions/base>
+
+  /usr/bin/chromium mr,
+  /usr/lib/chromium/chromium Cx,
+
+
+  profile /usr/lib/chromium/chromium flags=(complain) {
+    include <abstractions/base>
+    include <abstractions/fonts>
+    include <abstractions/nameservice>
+    include <abstractions/nvidia>
+    include <abstractions/user-tmp>
+
+    signal send set=term peer=/usr/bin/chromium///usr/lib/chromium/chromium//null-/usr/lib/chromium/chrome-sandbox//null-/usr/lib/chromium/chromium,
+
+    /usr/lib/chromium/chromium mr,
+    owner /dev/shm/* rw,
+    owner /home/mz/.cache/chromium/** rw,
+    owner /home/mz/.config/chromium/** r,
+    owner /home/mz/.config/chromium/** w,
+    owner /proc/*/fd/ r,
+    owner /proc/*/stat r,
+
+  }
+}

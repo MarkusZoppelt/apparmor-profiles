@@ -1,0 +1,13 @@
+# Last Modified: Mon Sep 13 20:19:31 2021
+abi <abi/3.0>,
+
+include <tunables/global>
+
+/usr/lib/signal-desktop/signal-desktop flags=(complain) {
+  include <abstractions/base>
+  include <abstractions/nameservice>
+
+  /usr/lib/signal-desktop/signal-desktop mr,
+  owner /dev/shm/.org.chromium.Chromium.jG3Gq3 rw,
+
+}

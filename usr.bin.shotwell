@@ -1,0 +1,11 @@
+# Last Modified: Sat Sep 11 14:41:08 2021
+abi <abi/3.0>,
+
+include <tunables/global>
+
+/usr/bin/shotwell flags=(complain) {
+  include <abstractions/base>
+
+  /usr/bin/shotwell mr,
+
+}

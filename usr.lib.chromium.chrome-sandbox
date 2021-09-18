@@ -1,0 +1,66 @@
+# Last Modified: Mon Sep 13 11:40:28 2021
+abi <abi/3.0>,
+
+include <tunables/global>
+
+/usr/lib/chromium/chrome-sandbox {
+  include <abstractions/base>
+  include <abstractions/dovecot-common>
+  include <abstractions/postfix-common>
+  include <abstractions/ubuntu-konsole>
+
+  capability dac_override,
+  capability sys_admin,
+
+  signal receive set=term peer=/usr/lib/chromium/chromium,
+
+  ptrace read peer=/usr/lib/chromium/chromium,
+
+  /etc/ld.so.cache r,
+  /etc/ld.so.preload r,
+  /proc/ r,
+  /proc/*/ r,
+  /proc/*/fd/ r,
+  /proc/*/oom_score_adj w,
+  /proc/stat r,
+  /proc/sys/kernel/yama/ptrace_scope r,
+  /sys/devices/system/cpu/ r,
+  /sys/devices/system/cpu/online r,
+  /usr/lib/chromium/chrome-sandbox mr,
+  /usr/lib/chromium/chromium mrix,
+  owner "/home/mz/.config/chromium/Default/Local Storage/leveldb/000005.ldb" r,
+  owner "/home/mz/.config/chromium/Default/Local Storage/leveldb/000057.ldb" r,
+  owner "/home/mz/.config/chromium/Default/Local Storage/leveldb/000060.ldb" r,
+  owner "/home/mz/.config/chromium/Default/Local Storage/leveldb/000062.ldb" r,
+  owner "/home/mz/.config/chromium/Default/Local Storage/leveldb/000063.log" ra,
+  owner "/home/mz/.config/chromium/Default/Local Storage/leveldb/CURRENT" r,
+  owner "/home/mz/.config/chromium/Default/Local Storage/leveldb/LOG" w,
+  owner "/home/mz/.config/chromium/Default/Local Storage/leveldb/MANIFEST-000001" ra,
+  owner "/home/mz/.config/chromium/Default/Session Storage/000005.ldb" r,
+  owner "/home/mz/.config/chromium/Default/Session Storage/000007.ldb" r,
+  owner "/home/mz/.config/chromium/Default/Session Storage/000009.ldb" r,
+  owner "/home/mz/.config/chromium/Default/Session Storage/000009.log" ra,
+  owner "/home/mz/.config/chromium/Default/Session Storage/CURRENT" r,
+  owner "/home/mz/.config/chromium/Default/Session Storage/LOG" w,
+  owner "/home/mz/.config/chromium/Default/Session Storage/MANIFEST-000001" ra,
+  owner "/home/mz/.config/chromium/Guest Profile/Local Storage/leveldb/000003.log" ra,
+  owner "/home/mz/.config/chromium/Guest Profile/Local Storage/leveldb/CURRENT" r,
+  owner "/home/mz/.config/chromium/Guest Profile/Local Storage/leveldb/LOG" w,
+  owner "/home/mz/.config/chromium/Guest Profile/Local Storage/leveldb/MANIFEST-000001" ra,
+  owner "/home/mz/.config/chromium/Subresource Filter/Indexed Rules/31/9.29.4/Ruleset Data" r,
+  owner "/home/mz/.config/chromium/System Profile/Local Storage/leveldb/000003.log" ra,
+  owner "/home/mz/.config/chromium/System Profile/Local Storage/leveldb/CURRENT" r,
+  owner "/home/mz/.config/chromium/System Profile/Local Storage/leveldb/LOG" w,
+  owner "/home/mz/.config/chromium/System Profile/Local Storage/leveldb/MANIFEST-000001" ra,
+  owner /dev/shm/* r,
+  owner /dev/shm/* w,
+  owner /dev/shm/.org.chromium.Chromium.* rw,
+  owner /home/mz/.config/chromium/* r,
+  owner /home/mz/.config/chromium/WidevineCdm/*/_platform_specific/linux_x64/libwidevinecdm.so mr,
+  owner /home/mz/.config/chromium/WidevineCdm/*/manifest.json r,
+  owner /home/mz/.config/chromium/WidevineCdm/latest-component-updated-widevine-cdm r,
+  owner /proc/*/cmdline r,
+  owner /proc/*/stat r,
+  owner /proc/*/status r,
+
+}

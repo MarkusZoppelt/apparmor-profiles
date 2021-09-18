@@ -1,0 +1,16 @@
+# Last Modified: Mon Sep 13 11:28:56 2021
+abi <abi/3.0>,
+
+include <tunables/global>
+
+/usr/lib/chromium/crashpad_handler {
+  include <abstractions/base>
+
+  /proc/sys/fs/nr_open r,
+  /usr/lib/chromium/crashpad_handler Px,
+  /usr/lib/chromium/crashpad_handler mr,
+  owner "/home/mz/.config/chromium/Crash Reports/settings.dat" k,
+  owner "/home/mz/.config/chromium/Crash Reports/settings.dat" rw,
+  owner /proc/*/fd/ r,
+
+}
